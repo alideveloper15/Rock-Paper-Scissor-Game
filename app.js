@@ -5,6 +5,8 @@ const score = {
     ties: 0
 }
 
+console.log(JSON.parse(localStorage.getItem('score')))
+
 
 function playGame(playerMove){
     const computerMove = pickComputerMove();
@@ -55,6 +57,9 @@ function playGame(playerMove){
     else if(result==='Tie'){
         score.ties+=1
     }
+
+
+    localStorage.setItem('score', JSON.stringify(score))
 
     alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
 Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`)
