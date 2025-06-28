@@ -43,12 +43,8 @@ body{
     cursor: pointer;
 }
 
-.reset-score-button:hover{
-    transition: all 5s;
-    background-color: rgba(255, 255, 255, 0.726);
-}
-
-.auto-play-button:hover{
-    transition: all 5s;
-    background-color: rgba(255, 255, 255, 0.726);
+.reset-score-button:hover,.auto-play-button:hover{
+    transition: ease-in-out all 0.3s;
+    background-color: rgb(46, 46, 46);
+    color: white;
 }
