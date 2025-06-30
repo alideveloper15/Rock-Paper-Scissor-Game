@@ -17,9 +17,12 @@ updateScoreElement()
 let isAutoPlaying = false
 let intervalId
 
+const autoPlayButtonElement = document.querySelector('.js-auto-play-button')
+
 // const autoPlay =  () =>{}
 function autoPlay() {
     if (!isAutoPlaying) {
+        autoPlayButtonElement.innerHTML = 'Stop Playing'
         intervalId = setInterval(() => {
             const playerMove = pickComputerMove()
             playGame(playerMove)
@@ -27,6 +30,7 @@ function autoPlay() {
         isAutoPlaying = true
     }
     else {
+        autoPlayButtonElement.innerHTML = 'Auto Play'
         clearInterval(intervalId)
         isAutoPlaying = false
     }
@@ -48,15 +52,33 @@ document.querySelector('.js-scissors-button')
         playGame('scissors')
     })
 
+document.querySelector('.js-reset-score-button')
+    .addEventListener('click', () => {
+        confirmationMessage()
+    })
+
+document.querySelector('.js-auto-play-button')
+    .addEventListener('click', () => {
+        autoPlay()
+    })
+
+
 document.body.addEventListener('keydown', (event) => {
-    if (event.key === 'r'){
+    console.log(event.key)
+    if (event.key.toLowerCase() === 'r'){
         playGame('rock')
     }
-    else if (event.key === 'p'){
+    else if (event.key.toLowerCase() === 'p'){
         playGame('paper')
     }
-    else if (event.key === 's'){
+    else if (event.key.toLowerCase() === 's'){
         playGame('scissors')
+    }
+    else if (event.key === 'Backspace'){
+        confirmationMessage()
+    }
+    else if (event.key.toLowerCase() === 'a'){
+        autoPlay()
     }
 })
 
@@ -146,4 +168,28 @@ function pickComputerMove() {
     }
 
     return computerMove
+}
+
+
+function zeroScore(){
+    score.wins=0    
+    score.losses=0    
+    score.ties=0
+    localStorage.removeItem('score')
+    updateScoreElement()
+}
+
+function confirmationMessage(){
+    confirmationButtonElement = document.querySelector('.js-confirmation')
+        const html = `
+        <div class="confirmation-text">Are you sure you want to reset the score?</div>
+        <button onclick="
+        zeroScore()
+        confirmationButtonElement.innerHTML=''
+        " class="confirmation-button">Yes</button>
+        <button onclick="
+        confirmationButtonElement.innerHTML=''
+        " class="confirmation-button">No</button>
+        `
+        confirmationButtonElement.innerHTML=html
 }

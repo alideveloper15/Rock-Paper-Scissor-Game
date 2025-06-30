@@ -33,7 +33,7 @@ body{
     margin-top: 60px;
 }
 
-.reset-score-button,.auto-play-button{
+.reset-score-button,.auto-play-button,.confirmation-button{
     background-color: white;
     border: none;
     font-size: 1rem;
@@ -43,8 +43,19 @@ body{
     cursor: pointer;
 }
 
-.reset-score-button:hover,.auto-play-button:hover{
+.reset-score-button:hover,.auto-play-button:hover,.confirmation-button:hover{
     transition: ease-in-out all 0.3s;
     background-color: rgb(46, 46, 46);
     color: white;
+}
+
+.confirmation{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.confirmation-button{
+    margin-left: 8px;
+    padding: 8px 12px;
 }
