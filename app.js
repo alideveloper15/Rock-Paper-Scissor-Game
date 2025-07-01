@@ -64,7 +64,6 @@ document.querySelector('.js-auto-play-button')
 
 
 document.body.addEventListener('keydown', (event) => {
-    console.log(event.key)
     if (event.key.toLowerCase() === 'r'){
         playGame('rock')
     }
